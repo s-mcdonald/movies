@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* 
+| Home|Search Page Route
+*/
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('search');
+
+/* 
+| Movie Detail Page Route
+*/
+Route::view('/view-movie', 'movie', ['imdb' => 'tt0088763'])->name('movie');
+// Route::get('/view-movie', function () {
+//     return view('movie', []);
+// });

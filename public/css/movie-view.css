@@ -1,0 +1,21 @@
+/*
+ * scss, can wrap pages  
+ * by route index.
+ * .movie-index ..class..
+ */
+
+ .movie-index .outer-wrapper {
+   display: flex;
+   flex-direction: row;
+   gap: 1rem;
+ }
+
+ .movie-content-wrapper {
+   display: flex;
+   flex-direction: column;
+   padding: 3rem;
+ }
+
+ .highlight { 
+    background-color: yellow; 
+ }

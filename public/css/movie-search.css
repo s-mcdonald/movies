@@ -1,0 +1,76 @@
+/*
+ * scss, can wrap pages  
+ * by route index.
+ * .search-index ..class..
+ */
+
+
+/**
+ * Search Input box
+ */
+ .search-index .search-box-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-index .movie-search-bar {
+  border: 4px solid black;
+  border-right: none;
+  border-radius: 0;
+}
+.search-index .movie-search-bar:focus {
+  border-color:  yellow;
+  outline-color: yellow;
+}
+
+.search-index .results-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.search-index .results-container .result-item {
+  padding: 2rem;
+  border: 1px solid #eee;
+}
+
+.search-index .results-container .result-item,
+.search-index .results-container .result-item * {
+  color: black !important;
+  background-color: white;
+  border-color: #eee;
+}
+
+.search-index .results-container .result-item:first-of-type,
+.search-index .results-container .result-item:first-of-type * {
+  color: white !important;
+  background-color: darkslategrey !important;
+}
+
+.search-index .results-container .result-item img {
+  height: 250px;
+}
+
+@media (max-width: 768px) {
+  .search-index .results-container {
+    display: flex !important;
+  }
+}
+
+/**
+ * Buttons
+ */
+ .search-index .custom-button {
+  border-radius: 0;
+  background-color: black;
+  border: 4px solid black;
+  color: white
+}
+
+.search-index .custom-button:hover {
+  border-radius: 0;
+  background-color: white;
+  border-color: black;
+  color: black
+}
