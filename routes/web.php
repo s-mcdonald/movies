@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\MovieController;
+use App\Models\Movie;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,18 +17,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-/* 
-| Home|Search Page Route
-*/
-Route::get('/', function () {
-    return view('home');
-})->name('search');
-
-/* 
-| Movie Detail Page Route
-*/
-Route::view('/view-movie', 'movie', ['imdb' => 'tt0088763'])->name('movie');
-// Route::get('/view-movie', function () {
-//     return view('movie', []);
-// });
+Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('search', [SearchController::class,'index'])->name('search-get');
+Route::post('search', [SearchController::class,'store'])->name('search');
+Route::get('movie/{movie}', [MovieController::class,'index'])->name('movie');
