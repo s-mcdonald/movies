@@ -43,7 +43,7 @@
 
 /* text/theme Coloring */
 .search-index .results-container .result-item * {
-  color: black !important;
+  color: black;
   background-color: white;
   border-color: #eee;
 }
@@ -51,8 +51,15 @@
 /* text/theme Coloring of the first result */
 .search-index .results-container .result-item:first-of-type,
 .search-index .results-container .result-item:first-of-type * {
-  color: white !important;
-  background-color: var(--col-contrast) !important;
+  color: white;
+  background-color: var(--col-contrast);
+}
+
+.search-index .results-container .result-item:hover,
+.search-index .results-container .result-item:hover * {
+  color: black !important;
+  background-color: yellow;
+  border-color: yellow;
 }
 
 /* fix height of image */
