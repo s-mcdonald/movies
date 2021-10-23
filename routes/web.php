@@ -17,7 +17,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [HomeController::class,'index'])->name('home');
+
+// Home Page
+Route::get('/', function () {
+    return view('home');
+});
+
 Route::get('search', [SearchController::class,'index'])->name('search-get');
 Route::post('search', [SearchController::class,'store'])->name('search');
 Route::get('movie/{movie}', [MovieController::class,'index'])->name('movie');
