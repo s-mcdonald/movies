@@ -6,10 +6,9 @@
     <body class="default-template {{ Route::current()->getName() }}-index">
         <main>
             <div class="container py-4">
-            @include('partials.header-bar')
-
-            @yield('main-content')
-            @include('partials.footer')
+                @include('partials.header-bar')
+                @yield('main-content')
+                @include('partials.footer')
             </div>
         </main>
         @include('partials.scripts')
