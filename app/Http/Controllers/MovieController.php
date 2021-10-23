@@ -33,7 +33,7 @@ class MovieController extends BaseController
             'p' => 'sometimes|min:1|max:50'
         ]);
 
-        $phrase = Str::replace(" ","%20", $items['p']);
+        $phrase = isset($items['p']) ? Str::replace(" ","%20", $items['p']) : '';
 
         return view('movie', compact('movie','phrase'));
     }
