@@ -3,7 +3,7 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="default-template default-index">
+    <body class="default-template home-index">
         <main>
             <div class="container py-4">
                 @include('partials.header-bar')

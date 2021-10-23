@@ -1,4 +1,4 @@
-@extends('templates.default')
+@extends('templates.movie')
 
 @section('main-content')
 
