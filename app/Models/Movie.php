@@ -23,6 +23,7 @@ class Movie
         $this->imdb = $response->imdbID;
         $this->poster = $response->Poster;
         $this->runtime = $response->Runtime;
+        $this->imdb_score = $response->imdbRating;
     }
     
     /**

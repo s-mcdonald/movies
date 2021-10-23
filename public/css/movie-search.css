@@ -11,14 +11,14 @@
 }
 
 .search-index .movie-search-bar {
-  border: 4px solid black;
+  border: 4px solid var(--col-contrast);
   border-right: none;
   border-radius: 0;
 }
 
 .search-index .movie-search-bar:focus {
-  border-color:  yellow;
-  outline-color: yellow;
+  border-color:  var(--col-highlight);
+  outline-color: var(--col-highlight);
 }
 
 .search-index .results-container {
@@ -52,7 +52,7 @@
 .search-index .results-container .result-item:first-of-type,
 .search-index .results-container .result-item:first-of-type * {
   color: white !important;
-  background-color: darkslategrey !important;
+  background-color: var(--col-contrast) !important;
 }
 
 /* fix height of image */
@@ -75,16 +75,16 @@
 
 .search-index .custom-button {
   border-radius: 0;
-  background-color: black;
-  border: 4px solid black;
+  background-color: var(--col-contrast);
+  border: 4px solid var(--col-contrast);
   color: white
 }
 
 .search-index .custom-button:hover {
   border-radius: 0;
   background-color: white;
-  border-color: black;
-  color: black
+  border-color: var(--col-contrast);
+  color: var(--col-contrast);
 }
 
 /* 

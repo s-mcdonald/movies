@@ -1,16 +1,22 @@
 
- .movie-index .outer-wrapper {
-   display: flex;
-   flex-direction: row;
-   gap: 1rem;
- }
+.movie-index .outer-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
 
- .movie-index .movie-content-wrapper {
-   display: flex;
-   flex-direction: column;
-   padding: 3rem;
- }
+.movie-index .movie-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  margin-bottom: 2.5rem;
+}
 
- .movie-index .highlight { 
-    background-color: yellow; 
- }
+.movie-index .highlight { 
+  background-color: var(--col-highlight);
+}
+
+.movie-index .movie-content-wrapper .rating { 
+  padding: 10px;
+  border: 1px solid var(--col-outlines);
+}
