@@ -5,45 +5,49 @@
 //
 (() => {
  
-    let string = 'the'; // as in back to the future
+    // The try catch is just checking to see if 
+    // the variable is defined.
+    try {
+        userphrase;
+    } 
+    catch(e) {
+        console.log('userphrase is not defined');
+        return;
+    }
+
+    // defined in the blade view
+    let string =  userphrase.replaceAll("%20"," ");
 
     if (!string.length) {
+        console.log("Insufficient Phrase Length to highlight");
         return;
     }
 
     //
-    // Lets get the dom-el, in future, we could add foreach el, => process()
-    // so we can enumerate over multiple searchable elements. 
-    //
-    const allSearchableText = document.querySelector('.searchable-content');
-
-
-    //
-    // Create the regex from our string
-    //
-    let regexPattern = new RegExp(string,'gi');
-
-    //
-    // Wrap the text function..
+    // Fn to Wrap the text.
     //
     let highlighted = (text) => '<span class="highlight">' + text + '</span>';
 
     //
-    // Just for fun, count the matches
+    // Find all elements with the designated class
     //
-    let totalMatches = (string.match(regexPattern) || []).length;
+    const allSearchableText = document.querySelectorAll('.searchable-content');
 
     //
-    // Only log if we get some results
+    // Create the regex from our string
+    // Here we are using `i` for case
+    // insensitive
     //
-    if (totalMatches > 0)
-        console.log("A total of " + totalMatches + " matches of the phrase " + string + " was found");
+    let regexPattern = new RegExp(string,'gi');
 
     //
     // now replace all the found matches with
-    // the higjhlighted content
+    // the higjhlighted content. Need to
+    // loop through all elements that
+    // are classed accordingly.
     //
-    allSearchableText.innerHTML = allSearchableText.textContent.replaceAll(regexPattern, highlighted);
-    
+    allSearchableText.forEach(e =>  
+        e.innerHTML = e.textContent.replaceAll(regexPattern, highlighted)
+    );
 
 })();
