@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 // Home Page
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('search', [SearchController::class,'index'])->name('search-get');
 Route::post('search', [SearchController::class,'store'])->name('search');

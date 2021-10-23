@@ -4,11 +4,14 @@
 
     <div class="outer-wrapper">
         <img src="{{ $movie->poster }}" alt="" style="height:300px">
-        <div class="movie-content-wrapper ">
+        <div class="movie-content-wrapper">
             <h2><span class="searchable-content">{{ $movie->title }}</span> ({{ $movie->year }})</h2>
-            <span class="rating">{{ $movie->rated }}</span>
-            <span class="rating">{{ $movie->runtime }}</span>
-            <span class="rating">{{ $movie->genre }}</span>
+            <div>
+                <span class="rating">{{ $movie->rated }}</span>
+                <span class="rating">{{ $movie->imdb_score }}</span>
+                <span class="rating">{{ $movie->runtime }}</span>
+                <span class="rating">{{ $movie->genre }}</span>
+            </div>
             <div class="description searchable-content">
                 {{ $movie->plot }}
             </div>
