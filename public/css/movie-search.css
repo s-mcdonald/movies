@@ -98,6 +98,23 @@
   color: var(--col-contrast);
 }
 
+.search-index .paginator {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-index .paginator a {
+  padding: 1rem;
+  margin: 0.5rem;
+  border: 1px solid var(--col-contrast);
+  text-decoration: none;
+}
+
+.search-index .paginator a.current {
+  background-color: var(--col-contrast);
+  color: var(--col-highlight);
+}
+
 /* 
  * Responsive display
  */

@@ -7,9 +7,9 @@
             {{ __('app.description') }}
         </p>
         <div class="search-box-wrapper">
-            <form method="POST" action="{{ route('search') }}">
+            <form method="POST" action="{{ route('search-get') }}">
                 @csrf
-                <input name="s" type="text" class="form-control movie-search-bar" value="{{ $phrase }}">
+                <input name="phrase" type="text" class="form-control movie-search-bar" value="{{ $phrase }}">
                 <button class="btn custom-button" type="submit">{{ __('app.search_btn') }}</button>
             </form>
         </div>

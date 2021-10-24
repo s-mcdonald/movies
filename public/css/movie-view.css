@@ -20,3 +20,17 @@
   padding: 10px;
   border: 1px solid var(--col-outlines);
 }
+
+.movie-index .movie-content-wrapper .tags { 
+  margin-top: 1rem;
+}
+
+.movie-index .movie-content-wrapper .description { 
+  margin-top: 2rem;
+}
+
+.movie-index .movie-content-wrapper .toolbar { 
+  border-top: 1px solid var(--col-outlines);
+  width: 100%;
+  margin-top: 2rem;
+}

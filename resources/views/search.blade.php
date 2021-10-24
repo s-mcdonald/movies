@@ -2,16 +2,20 @@
 
 @section('main-content')
 
-    @include('partials.big-search')
+    @if($show)
+        @include('partials.big-search')
+    @endif
 
     <div class="results-container">
 
-        @if(!empty($results))
-            @foreach ($results->Search as $item)
-                @include('partials.movie-result', ['movie' => $item])
+        @if(isset($results))
+            @foreach ($results as $movie)
+                @include('partials.movie-result', ['movie' => $movie])
             @endforeach
         @endif
 
     </div>
+
+    @include('partials.pagination', ['phrase' => $phrase, 'paginator' => $paginator])
 
 @endsection

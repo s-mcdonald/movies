@@ -23,6 +23,6 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('search', [SearchController::class,'index'])->name('search-get');
+Route::get('search/{phrase?}/{page?}', [SearchController::class,'index'])->name('search-get');
 Route::post('search', [SearchController::class,'store'])->name('search');
 Route::get('movie/{movie}', [MovieController::class,'index'])->name('movie');
