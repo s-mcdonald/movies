@@ -2,11 +2,10 @@
 
 namespace App\Models;
 use Illuminate\Support\Facades\Http;
+use App\Support\Results;
 
-class Movie 
+class Movie
 {
-    protected $movie_title;
-    
     /**
      * __construct
      *
@@ -15,22 +14,22 @@ class Movie
      */
     public function __construct($response)
     {
+        $this->plot = $response->Plot;
         $this->year = $response->Year;
+        $this->imdb = $response->imdbID;
         $this->title = $response->Title;
         $this->rated = $response->Rated;
         $this->genre = $response->Genre;
-        $this->plot = $response->Plot;
-        $this->imdb = $response->imdbID;
         $this->poster = $response->Poster;
         $this->runtime = $response->Runtime;
         $this->imdb_score = $response->imdbRating;
     }
-    
+
     /**
      * fetch
      *
      * Call external api and decode posiotive result.
-     * 
+     *
      * @todo - Implement alternate identification methods.
      * @param  mixed $field The field to search for
      * @param  mixed $value If $field is imdb then value is the imdb id
@@ -50,25 +49,20 @@ class Movie
 
         return NULL;
     }
-    
+
     /**
-     * findByPhrase
+     * findAllByPhrase
      *
      * @param  mixed $phrase
      * @param  mixed $page
-     * @return void
+     * @return mixed
      */
-    public static function findByPhrase($phrase = "", int $page = 1)
+    public static function findAllByPhrase($phrase = "", int $page = 1)
     {
-        $results = [];
+        $phrase = trim($phrase);
         $userkey = env('OMDBAPI_API_KEY');
         $url = "http://www.omdbapi.com/?apikey={$userkey}&s={$phrase}&page={$page}&movie=movie&v=1";
         $response = Http::get($url);
-
-        if ($response->successful()) {
-            $results = $response->body();
-        }
-
-        return json_decode($results);
+        return new Results($response, $page);
     }
 }
