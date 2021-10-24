@@ -25,12 +25,9 @@ class SearchController extends BaseController
      *
      * @return void
      */
-    public function index(Request $request)
+    public function index(Request $request, $phrase = '', int $page = 1)
     {
-        $userkey = env('OMDBAPI_API_KEY');
-        $activated = (Str::length($userkey) > 0 );
-        $phrase = '';
-        return view('search', compact('phrase','userkey', 'activated'));
+        return $this->handleRequest($request, $phrase, $page);
     }
 
     /**
@@ -42,14 +39,40 @@ class SearchController extends BaseController
      *
      * @return void
      */
-    public function store(Request $request)
+    public function store(Request $request, int $page = 1)
     {
         $items = $request->validate([
-            's' => 'required|min:1|max:255'
+            'phrase' => 'required|min:1|max:255'
         ]);
 
-        $phrase = trim($items['s']);
-        $results = Movie::findByPhrase($phrase, $page = 1);
-        return view('search', compact('phrase','results'));
+        $phrase = trim($items['phrase']);
+
+        return $this->handleRequest($request, $phrase, $page);
+    }
+
+    /**
+     * handleRequest
+     *
+     * Since both POST and GET reuest are doing the same thing, we
+     * can have a common method that handles tha majority
+     * of the common logic, the get and post methods
+     * can now just focus on individual routing
+     * logic of the incoming data.
+     *
+     * @param  mixed $request
+     * @param  mixed $phrase
+     * @param  mixed $page
+     * @return void
+     */
+    protected function handleRequest(Request $request, $phrase = '', int $page = 1)
+    {
+        $result = Movie::findAllByPhrase($phrase, $page);
+  
+        return view('search')
+                ->withPaginator($result->paginator())
+                ->withPage($page)
+                ->withPhrase($phrase)
+                ->withShow(($page == 1))
+                ->withResults($result->items());
     }
 }
